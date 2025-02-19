@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Socket.IO Test Client</title>
+  <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+</head>
+<body>
+  <script>
+    const socket = io('http://localhost:3000');
+    socket.on('connect', () => {
+      console.log('Connected as:', socket.id);
+      // Test sending a message to the backend
+      socket.emit('message', 'Hello from the local frontend!');
+    });
+    socket.on('message', (msg) => {
+      console.log('Message from server:', msg);
+    });
+  </script>
+</body>
+</html>
