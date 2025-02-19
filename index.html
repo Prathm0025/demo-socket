@@ -8,7 +8,7 @@
 </head>
 <body>
   <script>
-    const socket = io('http://localhost:3000');
+    const socket = io('http://3.144.35.191:3000/');
     socket.on('connect', () => {
       console.log('Connected as:', socket.id);
       // Test sending a message to the backend
