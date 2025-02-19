@@ -35,6 +35,16 @@ setupRedisAdapter().catch((err) => {
   console.error('Redis Adapter Setup Error:', err);
 });
 
+// Add a root route to display uptime and other details
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),            // Uptime in seconds
+    timestamp: new Date().toISOString(),  // Current server time
+    nodeVersion: process.version          // Node.js version
+  });
+});
+
 // Socket.IO connection event
 io.on('connection', (socket) => {
   console.log(`Client connected: ${socket.id}`);
